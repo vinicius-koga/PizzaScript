@@ -1,0 +1,98 @@
+.cart-area {
+    .cart {
+        position: fixed;
+        background-color: #fff;
+        height: 100lvh;
+        width: 320px;
+        right: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        padding: 15px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+
+            .title {
+                font-size: 1.7rem;
+            }
+
+            .closeBtn {
+                display: flex;
+                align-items: center;
+                transition: all 0.2s ease;
+                cursor: pointer;
+            }
+
+            .closeBtn:hover {
+                transform: scale(1.2);
+            }
+        }
+
+        .cart-body {
+            .cart-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 0;
+                border-bottom: 1px solid var(--background-grey-02);
+
+                .left {
+                    display: flex;
+                    align-items: center;
+
+                    img {
+                        width: 45px;
+                        border-radius: 5px;
+                        margin-right: 5px;
+                    }
+
+                    p {
+                        overflow-x: auto;
+                    }
+                }
+
+                .rbtn {
+                    padding: 5px;
+                }
+            }
+        }
+
+        .cart-checkout {
+
+            .cart-checkout-row {
+                display: flex;
+                justify-content: space-between;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid var(--background-grey-02);
+                font-size: 0.9rem;
+
+                p {
+                    color: #797979;
+                }
+                span {
+                    color: #797979;
+                }
+            }
+
+            .total {
+                font-size: 1.5rem;
+                p {
+                    color: var(--text-color);
+                }
+                span {
+                    color: var(--text-color);
+                }
+            }
+        }
+
+        .btn {
+            margin-top: 15px;
+            font-size: 1rem;
+        }
+    }
+}

@@ -1,0 +1,34 @@
+.title {
+    color: var(--title-color);
+    display: flex;
+    align-items: center;
+    gap: 0.1em;
+}
+
+.title::after {
+    content: '';
+    width: 1em;
+    height: 0.15em;
+    background-color: var(--title-color);
+    transform: skew(-30deg);
+}
+
+.title::before {
+    content: '';
+    width: 1em;
+    height: 0.15em;
+    background-color: var(--title-color);
+    transform: skew(-30deg);
+}
+
+.page-title {
+    font-size: 2.2rem;
+    margin: 1em 0;
+}
+
+@media (max-width: 687px) {
+    .page-title {
+        margin-left: 1rem;
+        font-size: clamp(1px, 7vw, 2rem);
+    }
+}

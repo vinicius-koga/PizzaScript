@@ -1,0 +1,79 @@
+p {
+    color: var(--text-color);
+}
+
+img {
+    vertical-align: bottom;
+}
+
+.backdrop {
+    position: fixed;
+    width: 100vw;
+    height: 100lvh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.btn {
+    padding: 0.7rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--title-color);
+    background-color: var(--title-color);
+    font-weight: 500;
+    color: #fff;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--title-color);
+}
+
+.btn-row {
+    display: flex;
+
+    .rbtn {
+        background-color: var(--background-grey-01);
+        padding: 0.65rem;
+        cursor: pointer;
+        line-height: 1rem;
+
+        span {
+            font-weight: 400;
+            font-size: 0.8rem;
+        }
+    }
+
+    .rbtn:hover {
+        background-color: var(--background-grey-02);
+    }
+
+    .rbtn:first-child {
+        border-radius: 15px 0 0 15px;
+    }
+
+    .rbtn:last-child {
+        border-radius: 0 15px 15px 0;
+    }
+
+    .disabled:hover {
+        background-color: var(--background-grey-01);
+        cursor: default;
+    }
+
+    .selected {
+        background-color: var(--title-color);
+        color: #fff;
+    }
+
+    .selected:hover {
+        background-color: var(--title-color);
+        color: #fff;
+    }
+}
