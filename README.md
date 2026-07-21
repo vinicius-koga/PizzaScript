@@ -1,4 +1,4 @@
-# 🍕 PizzaScript
+## 🍕 PizzaScript
 
 Um projeto desenvolvido com **HTML, CSS e JavaScript** que simula o funcionamento de uma pizzaria online. O objetivo principal foi praticar manipulação do DOM, organização de código, módulos JavaScript e consumo de dados em formato JSON.
 
