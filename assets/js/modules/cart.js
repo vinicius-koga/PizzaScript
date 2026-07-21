@@ -106,6 +106,7 @@ function increaseItemAmount(e) {
     cart[cartItemIndex].price = cart[cartItemIndex].amount * pizzaStandardPrice;
     cartBody.innerHTML = '';
     renderCart();
+    updateCartIcon();
 }
 function decreaseItemAmount(e) {
     let cartItemIndex = e.target.closest('.cart-item').getAttribute('key');
@@ -117,11 +118,13 @@ function decreaseItemAmount(e) {
         cart[cartItemIndex].price = cart[cartItemIndex].amount * pizzaStandardPrice;
         cartBody.innerHTML = '';
         renderCart();
+        updateCartIcon();
 
     } else if (cart[cartItemIndex].amount === 1) {
         cart.splice(cartItemIndex, 1);
         cartBody.innerHTML = '';
         renderCart();
+        updateCartIcon();
     }
     
     if (cart.length === 0) {
