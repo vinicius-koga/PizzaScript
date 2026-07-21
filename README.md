@@ -14,16 +14,17 @@ O principal foco do projeto foi tornar o catálogo totalmente dinâmico. Todas a
 
 ## ✨ Funcionalidades
 
+- 📱 Interface responsiva
 - 📋 Exibição dinâmica do catálogo de pizzas
 - 🔍 Visualização de detalhes da pizza
 - 🛒 Adição de pizzas ao carrinho
+- 📦 Seleção de tamanho da pizza
 - ➕ Aumento da quantidade de itens
 - ➖ Diminuição da quantidade de itens
-- ❌ Remoção automática de itens quando a quantidade chega a zero
 - 💰 Cálculo automático do subtotal
-- 🚚 Cálculo de desconto
+- ➗ Cálculo de desconto
 - 💵 Cálculo do valor total do pedido
-- 📱 Interface responsiva
+- ✅ Finalização do pedido
 
 ---
 
