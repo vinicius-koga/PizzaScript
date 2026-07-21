@@ -21,7 +21,7 @@ O principal foco do projeto foi tornar o catálogo totalmente dinâmico. Todas a
 - ➖ Diminuição da quantidade de itens
 - ❌ Remoção automática de itens quando a quantidade chega a zero
 - 💰 Cálculo automático do subtotal
-- 🚚 Cálculo da taxa de entrega
+- 🚚 Cálculo de desconto
 - 💵 Cálculo do valor total do pedido
 - 📱 Interface responsiva
 
@@ -45,9 +45,3 @@ O principal foco do projeto foi tornar o catálogo totalmente dinâmico. Todas a
 - [ ] Finalização do pedido
 - [ ] Histórico de pedidos
 - [ ] Integração com banco de dados
-
----
-
-## 👨‍💻 Autor
-
-Desenvolvido por **Vinícius** como projeto de estudos em Desenvolvimento Web Full Stack.
