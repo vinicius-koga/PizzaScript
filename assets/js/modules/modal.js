@@ -20,14 +20,13 @@ let pizzaImg;
 let selectedSize = 1;
 let selectedAmount = 1;
 
-// RENDER MODAL FUNCTIONS
+// MODAL RENDER FUNCTIONS
 function openModal() {
     modal.style.display = 'flex';
     modal.style.opacity = '0';
     setTimeout(() => {
         modal.style.opacity = '1';
-    })    
-
+    })
     modalBox.style.opacity = '0';
     setTimeout(() => {
         modalBox.style.opacity = '1';
@@ -40,7 +39,7 @@ function openModal() {
 export function renderModal(pizzaIndex) {
     selectedPizza = pizzaIndex;
     pizzaPrice = pizzaJson[selectedPizza].price[selectedSize];
-    pizzaImg = pizzaJson[selectedPizza].img
+    pizzaImg = pizzaJson[selectedPizza].img;
     openModal();
 
     modal.querySelector('img').src = pizzaImg;
@@ -61,6 +60,7 @@ function closeModal() {
     selectedAmount = 1;
 
     modal.querySelector('.selected').classList.remove('selected');
+
     modal.style.opacity = '0';
     modalBox.style.opacity = '0';
     modalBox.style.transform = 'translateY(-30px)';
@@ -69,7 +69,7 @@ function closeModal() {
     }, 300)
 }
 
-// FUNCTIONS
+// MODAL FUNCTIONS
 function changePizzaSize(e) {
     const sizeKey = Number(e.target.closest('.size-btn').getAttribute('key'));
 
@@ -80,8 +80,8 @@ function changePizzaSize(e) {
     pizzaPrice = pizzaJson[selectedPizza].price[selectedSize];
 
     selectedAmount = 1;
-    modalAmount.innerText = selectedAmount;
 
+    modalAmount.innerText = selectedAmount;
     modalPrice.innerText = `R$${pizzaPrice.toFixed(2)}`;
 }
 function increasePizzaAmount() {
@@ -125,12 +125,20 @@ function modalCartPush() {
     closeModal();
 }
 
-// EVENT LISTENERS
+// MODAL EVENT LISTENERS
+sizeBtns.forEach(size => {
+    size.addEventListener('click', (e) => {
+        changePizzaSize(e)
+    })
+})
 increaseBtn.addEventListener('click', () => {
     increasePizzaAmount();
 })
 decreaseBtn.addEventListener('click', () => {
     decreasePizzaAmount();
+})
+modalAdd2CartBtn.addEventListener('click', () => {
+    modalCartPush();
 })
 modal.addEventListener('click', (e) => {
     if (e.target.classList.contains('modal-area')) {
@@ -139,12 +147,4 @@ modal.addEventListener('click', (e) => {
 })
 closeBtn.addEventListener('click', () => {
     closeModal();
-})
-sizeBtns.forEach(size => {
-    size.addEventListener('click', (e) => {
-        changePizzaSize(e)
-    })
-})
-modalAdd2CartBtn.addEventListener('click', () => {
-    modalCartPush();
 })

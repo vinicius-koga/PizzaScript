@@ -16,7 +16,7 @@ const orderBtn = document.querySelector('.order-btn');
 export let cart = [];
 const discountPercentage = 10;
 
-// RENDER CART FUNCTIONS
+// CART RENDER FUNCTIONS
 function openCart() {
     renderCart();
     if(cart.length > 0) {
@@ -32,14 +32,14 @@ function openCart() {
     }
 }
 function renderCart() {
-    cart.forEach((pizza, index) => {
+    cart.forEach((item, index) => {
         let cartItemNode = cartItem.cloneNode(true);
         cartBody.append(cartItemNode);
 
         cartItemNode.setAttribute('key', index)
-        cartItemNode.querySelector('img').src = pizza.img;
-        cartItemNode.querySelector('.amount').innerText = pizza.amount;
-        cartItemNode.querySelector('p').innerHTML = `${pizza.name}&nbsp;<span>(${renderPizzaSize(pizza.size).toUpperCase()})</span>`;        
+        cartItemNode.querySelector('img').src = item.img;
+        cartItemNode.querySelector('.amount').innerText = item.amount;
+        cartItemNode.querySelector('p').innerHTML = `${item.name}&nbsp;<span>(${renderPizzaSize(item.size).toUpperCase()})</span>`;        
     
         cartItemNode.querySelector('.increase').addEventListener('click', (e) => {
             increaseItemAmount(e);
@@ -76,8 +76,7 @@ function renderPizzaSize(sizeIndex) {
     }
 }
 function calcSubtotal() {
-    const total = cart.reduce((acc, pizza) => acc + pizza.price, 0);
-
+    const total = cart.reduce((acc, item) => acc + item.price, 0);
     return total.toFixed(2)
 }
 function calcDiscount() {
@@ -89,9 +88,9 @@ function calcTotal() {
     return total.toFixed(2);
 }
 
-// FUNCTIONS
+// CART FUNCTIONS
 export function updateCartIcon() {
-    let cartLength = cart.reduce((acc, pizza) => { return acc + pizza.amount }, 0);
+    let cartLength = cart.reduce((acc, item) => acc + item.amount , 0);
     if (cart.length > 0) {
         cartIconTooltip.innerText = cartLength
         cartIconTooltip.style.display = 'block';
@@ -101,11 +100,10 @@ export function updateCartIcon() {
 }
 function increaseItemAmount(e) {
     let cartItemIndex = e.target.closest('.cart-item').getAttribute('key');
-
-    let pizzaPrice = cart[cartItemIndex].price / cart[cartItemIndex].amount;
+    let pizzaStandardPrice = cart[cartItemIndex].price / cart[cartItemIndex].amount;
 
     cart[cartItemIndex].amount++;
-    cart[cartItemIndex].price = cart[cartItemIndex].amount * pizzaPrice;
+    cart[cartItemIndex].price = cart[cartItemIndex].amount * pizzaStandardPrice;
     cartBody.innerHTML = '';
     renderCart();
 }
@@ -113,24 +111,26 @@ function decreaseItemAmount(e) {
     let cartItemIndex = e.target.closest('.cart-item').getAttribute('key');
 
     if(cart[cartItemIndex].amount > 1) {
-        let pizzaPrice = cart[cartItemIndex].price / cart[cartItemIndex].amount;
+        let pizzaStandardPrice = cart[cartItemIndex].price / cart[cartItemIndex].amount;
+
         cart[cartItemIndex].amount--;
-        cart[cartItemIndex].price = cart[cartItemIndex].amount * pizzaPrice;
+        cart[cartItemIndex].price = cart[cartItemIndex].amount * pizzaStandardPrice;
         cartBody.innerHTML = '';
         renderCart();
+
     } else if (cart[cartItemIndex].amount === 1) {
         cart.splice(cartItemIndex, 1);
         cartBody.innerHTML = '';
         renderCart();
-    }  
+    }
     
-    if (cart.length == 0) {
+    if (cart.length === 0) {
         closeCart();
         cartIconTooltip.style.display = 'none';
     }
 }
 
-// EVENTLISTENERS
+// CART EVENT LISTENERS
 cartIcon.addEventListener('click', () => {
     openCart();
 })
@@ -143,9 +143,19 @@ cartArea.addEventListener('click', (e) => {
     }
 })
 orderBtn.addEventListener('click', () => {
+    // ALERT THE ORDER
     let list = ''
     for(let i of cart) {
         list += `• ${i.amount} ${i.name} (${renderPizzaSize(i.size).toUpperCase()})\n`
     }
     alert(`Pedido:\n${list}\nTotal: ${calcTotal()}`)
+
+    // POST SIMULATION
+    fetch("...", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(cart)
+    });
 })
