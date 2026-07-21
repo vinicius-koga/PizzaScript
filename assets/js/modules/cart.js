@@ -148,7 +148,7 @@ orderBtn.addEventListener('click', () => {
     for(let i of cart) {
         list += `• ${i.amount} ${i.name} (${renderPizzaSize(i.size).toUpperCase()})\n`
     }
-    alert(`Pedido:\n${list}\nTotal: ${calcTotal()}`)
+    alert(`Pedido:\n${list}\nTotal: R$${calcTotal()}`)
 
     // POST SIMULATION
     fetch("...", {
